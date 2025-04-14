@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -31,7 +31,8 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #ccc;
@@ -76,7 +77,7 @@
       <form action="https://formsubmit.co/joshdlawson@gmail.com" method="POST">
         <!-- FormSubmit options -->
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html" />
+        <input type="hidden" name="_next" value="https://joshdlawson.github.io/jts-pool-service/thank-you.html" />
 
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -86,6 +87,23 @@
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Reason for Contact</label>
+          <select id="reason" name="reason" required>
+            <option value="">-- Please choose an option --</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Quote Request">Quote Request</option>
+            <option value="Technical Support">Technical Support</option>
+            <option value="Billing">Billing</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         <div class="form-group">
