@@ -67,5 +67,17 @@
   <footer>
     <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Clear the cart if the user came from checkout
+    if (document.referrer.includes("checkout.html")) {
+      localStorage.removeItem("cart");
+    }
+
+    // Redirect to homepage after 5 seconds
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 5000);
+  </script>
 </body>
 </html>

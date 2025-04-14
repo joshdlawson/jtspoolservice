@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -20,6 +24,9 @@ header {
   padding: 1.5rem;
   color: #fff;
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header h1 {
@@ -47,6 +54,19 @@ nav ul li a.active,
 nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Cart Badge */
+.cart-badge {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -5px;
+  right: -10px;
 }
 
 /* Main Content Styles */
