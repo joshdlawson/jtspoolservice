@@ -3,16 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JTS Pool Service</title>
+  <title>Checkout - JTS Pool Service</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    .checkout-container {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout-container h2 {
+      text-align: center;
+      color: #0277bd;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #0277bd;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #01579b;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>JTS Pool Service</h1>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="freequote.html">Free Quote</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -28,27 +76,51 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h2>Crystal Clear Pools Await!</h2>
-      <p>Expert Pool Services and Supplies. Satisfaction Guaranteed.</p>
-      <a href="freequote.html" class="cta-button">Get Your Free Quote</a>
-    </section>
+    <div class="checkout-container">
+      <h2>Checkout</h2>
+      <form onsubmit="handleFakePayment(event)">
+        <div class="form-group">
+          <label for="name">Cardholder Name</label>
+          <input type="text" id="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="card">Card Number</label>
+          <input type="text" id="card" maxlength="16" required />
+        </div>
+
+        <div class="form-group">
+          <label for="exp">Expiration Date</label>
+          <input type="text" id="exp" placeholder="MM/YY" required />
+        </div>
+
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" maxlength="3" required />
+        </div>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 JTS Pool Service | Follow us: 
-      <a href="#" style="color:#fff;">Facebook</a> | 
-      <a href="#" style="color:#fff;">Instagram</a>
-    </p>
+    <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
 
   <script>
-    // Load cart count from localStorage
+    // Load cart count
     document.addEventListener('DOMContentLoaded', () => {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const count = cart.reduce((acc, item) => acc + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     });
+
+    function handleFakePayment(event) {
+      event.preventDefault();
+      alert('Payment successful! Redirecting...');
+      window.location.href = 'checkout-success.html';
+    }
   </script>
 </body>
 </html>
