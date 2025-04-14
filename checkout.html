@@ -3,63 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart - JTS Pool Service</title>
-  <link rel="stylesheet" href=".form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  ">
+  <title>Checkout - JTS Pool Service</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    .cart-container {
-      max-width: 800px;
+    .checkout-container {
+      max-width: 600px;
       margin: 2rem auto;
-      padding: 1.5rem;
-      background: #fff;
+      padding: 2rem;
+      background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 1rem 0;
+    .checkout-container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    .cart-item h4 {
-      margin: 0;
+    .form-group {
+      margin-bottom: 1rem;
     }
 
-    .cart-summary {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      text-align: right;
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
     }
 
-    .cart-summary p {
-      margin: 0.5rem 0;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     .checkout-button {
-      display: block;
-      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.75rem;
       background-color: #0277bd;
       color: #fff;
-      padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -70,32 +54,6 @@
     .checkout-button:hover {
       background-color: #01579b;
     }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .summary-box {
-      background-color: #f4f9ff;
-      padding: 1rem;
-      border-radius: 5px;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -105,7 +63,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html" class="active">Cart</a></li>
+        <li><a href="cart.html">Cart</a></li>
         <li><a href="freequote.html">Free Quote</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
@@ -114,68 +72,31 @@
   </header>
 
   <main>
-    <div class="cart-container">
-      <h2>Your Cart</h2>
-
-      <div class="cart-item">
-        <h4>Chlorine Tablets</h4>
-        <p>$29.99</p>
-      </div>
-
-      <div class="cart-item">
-        <h4>Pool Brush</h4>
-        <p>$19.99</p>
-      </div>
-
-      <div class="cart-summary">
-        <p>Subtotal: $49.98</p>
-        <p>Delivery Fee: $9.99</p>
-        <hr>
-        <p><strong>Total: $59.97</strong></p>
-      </div>
-
-      <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" style="margin-top: 2rem;">
+    <div class="checkout-container">
+      <h2>Checkout</h2>
+      <form action="https://formsubmit.co/joshdlawson@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://yourusername.github.io/jts-pool-service/thankyou.html">
-
-        <h3>Enter Your Info to Complete Checkout</h3>
+        <input type="hidden" name="_next" value="https://joshdlawson.github.io/jts-pool-service/thankyou.html">
+        <input type="hidden" id="cart-data" name="cart" value="">
 
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" name="name" required>
+          <input type="text" name="name" id="name" required>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" name="email" required>
+          <input type="email" name="email" id="email" required>
         </div>
 
         <div class="form-group">
           <label for="address">Shipping Address</label>
-          <input type="text" name="address" required>
-        </div>
-
-        <div class="form-group">
-          <label for="payment">Payment Method</label>
-          <select name="payment" required>
-            <option value="">Select a payment method</option>
-            <option value="Credit Card">Credit Card</option>
-            <option value="PayPal">PayPal</option>
-            <option value="Bank Transfer">Bank Transfer</option>
-          </select>
+          <input type="text" name="address" id="address" required>
         </div>
 
         <div class="form-group">
           <label for="notes">Order Notes (Optional)</label>
-          <textarea name="notes" rows="4"></textarea>
-        </div>
-
-        <div class="summary-box">
-          <p><strong>Order Summary:</strong></p>
-          <p>Items: Chlorine Tablets, Pool Brush</p>
-          <p>Subtotal: $49.98</p>
-          <p>Delivery: $9.99</p>
-          <p><strong>Total: $59.97</strong></p>
+          <textarea name="notes" id="notes" rows="4"></textarea>
         </div>
 
         <button type="submit" class="checkout-button">Place Order</button>
@@ -186,5 +107,11 @@
   <footer>
     <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Populate hidden cart field with items
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-data').value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
+  </script>
 </body>
 </html>
