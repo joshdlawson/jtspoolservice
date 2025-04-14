@@ -82,11 +82,19 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.6rem;
       border: 1px solid #ccc;
       border-radius: 5px;
+    }
+
+    .summary-box {
+      background-color: #f4f9ff;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -126,9 +134,9 @@
         <p><strong>Total: $59.97</strong></p>
       </div>
 
-      <form action="https://formsubmit.co/joshdlawson@gmail.com" method="POST" style="margin-top: 2rem;">
+      <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" style="margin-top: 2rem;">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://yourusername.github.io/jts-pool-service/thank-you.html">
+        <input type="hidden" name="_next" value="https://yourusername.github.io/jts-pool-service/thankyou.html">
 
         <h3>Enter Your Info to Complete Checkout</h3>
 
@@ -148,8 +156,26 @@
         </div>
 
         <div class="form-group">
+          <label for="payment">Payment Method</label>
+          <select name="payment" required>
+            <option value="">Select a payment method</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label for="notes">Order Notes (Optional)</label>
           <textarea name="notes" rows="4"></textarea>
+        </div>
+
+        <div class="summary-box">
+          <p><strong>Order Summary:</strong></p>
+          <p>Items: Chlorine Tablets, Pool Brush</p>
+          <p>Subtotal: $49.98</p>
+          <p>Delivery: $9.99</p>
+          <p><strong>Total: $59.97</strong></p>
         </div>
 
         <button type="submit" class="checkout-button">Place Order</button>
