@@ -106,13 +106,37 @@
         <p>$19.99</p>
         <button>Add to Cart</button>
       </div>
-
-      <!-- Add additional pool chemical products similarly -->
     </div>
   </main>
 
   <footer>
     <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.chemical-card button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.chemical-card');
+          const name = card.querySelector('h3').textContent;
+          const price = parseFloat(card.querySelector('p').textContent.replace('$', ''));
+
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const existingItem = cart.find(item => item.name === name);
+
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            cart.push({ name, price, quantity: 1 });
+          }
+
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`${name} added to cart!`);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
