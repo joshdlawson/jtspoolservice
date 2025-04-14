@@ -6,6 +6,7 @@
   <title>Order Complete - JTS Pool Service</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     .success-container {
       max-width: 600px;
@@ -16,15 +17,18 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
     .success-container h2 {
       font-size: 2rem;
       color: #0277bd;
       margin-bottom: 1rem;
     }
+
     .success-container p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
+
     .success-container a {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -32,9 +36,10 @@
       color: #fff;
       border-radius: 5px;
       text-decoration: none;
-      margin: 0 0.5rem;
+      margin: 0.5rem;
       transition: background-color 0.3s;
     }
+
     .success-container a:hover {
       background-color: #01579b;
     }
@@ -59,25 +64,65 @@
       </ul>
     </nav>
   </header>
+
   <main>
     <div class="success-container">
       <h2>Thank You for Your Order!</h2>
       <p>Your order has been placed successfully. A confirmation email will be sent shortly.</p>
       <a href="index.html">Return Home</a>
       <a href="shop.html">Continue Shopping</a>
+      <a href="#" onclick="downloadReceipt()">Download Receipt (PDF)</a>
     </div>
   </main>
+
   <footer>
     <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
+
   <script>
+    // Remove cart from nav and reset badge
     localStorage.removeItem('cart');
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('cart-count').textContent = '0';
     });
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 7000);
+
+    async function downloadReceipt() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const data = JSON.parse(localStorage.getItem('lastOrder')) || {};
+      const cart = data.cart || [];
+
+      doc.setFontSize(18);
+      doc.text("JTS Pool Service - Order Receipt", 20, 20);
+
+      // Customer Information
+      doc.setFontSize(12);
+      doc.text(`Name: ${data.name || 'N/A'}`, 20, 30);
+      doc.text(`Email: ${data.email || 'N/A'}`, 20, 36);
+      doc.text(`Phone: ${data.phone || 'N/A'}`, 20, 42);
+
+      let y = 55;
+      let subtotal = 0;
+
+      cart.forEach((item) => {
+        const line = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+        doc.text(line, 20, y);
+        subtotal += item.price * item.quantity;
+        y += 10;
+      });
+
+      const delivery = 9.99;
+      const total = subtotal + delivery;
+
+      y += 10;
+      doc.text(`Subtotal: $${subtotal.toFixed(2)}`, 20, y);
+      y += 10;
+      doc.text(`Delivery Fee: $${delivery.toFixed(2)}`, 20, y);
+      y += 10;
+      doc.text(`Total: $${total.toFixed(2)}`, 20, y);
+
+      doc.save("receipt.pdf");
+    }
   </script>
 </body>
 </html>
