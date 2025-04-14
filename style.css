@@ -216,6 +216,62 @@ main {
   background-color: #01579b;
 }
 
+/* Equipment Product Cards */
+.equipment-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.equipment-card {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.equipment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.equipment-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.equipment-card h3 {
+  margin: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.equipment-card p {
+  color: #0277bd;
+  font-weight: bold;
+  margin: 0 0.75rem 1rem;
+}
+
+.equipment-card button {
+  margin: 0 0.75rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0277bd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.equipment-card button:hover {
+  background-color: #01579b;
+}
+
 /* Footer Styles */
 footer {
   background-color: #0277bd;
@@ -236,13 +292,16 @@ footer {
     padding: 3rem 1rem;
   }
 
-  .services {
+  .services,
+  .chemicals-container,
+  .equipment-container {
     flex-direction: column;
     align-items: center;
   }
 
   .service-card,
-  .chemical-card {
+  .chemical-card,
+  .equipment-card {
     width: 90%;
   }
 }
