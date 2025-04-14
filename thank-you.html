@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thank You - JTS Pool Service</title>
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -69,12 +69,12 @@
   </footer>
 
   <script>
-    // Clear the cart if the user came from checkout
+    // Clear cart if user came from checkout
     if (document.referrer.includes("checkout.html")) {
       localStorage.removeItem("cart");
     }
 
-    // Redirect to homepage after 5 seconds
+    // Redirect to home after 5 seconds
     setTimeout(() => {
       window.location.href = "index.html";
     }, 5000);
