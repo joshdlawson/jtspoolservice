@@ -5,6 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JTS Pool Service</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .services {
+      max-width: 1100px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .service-card h3 {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .testimonial {
+      background-color: #f0faff;
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 700px;
+      border-radius: 10px;
+    }
+
+    .testimonial blockquote {
+      font-style: italic;
+      color: #333;
+    }
+
+    .testimonial cite {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #0277bd;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,24 +64,45 @@
       </ul>
     </nav>
   </header>
-  
+
   <main>
     <section class="hero">
       <h2>Crystal Clear Pools Await!</h2>
       <p>Expert Pool Services and Supplies. Satisfaction Guaranteed.</p>
       <a href="freequote.html" class="cta-button">Get Your Free Quote</a>
     </section>
-    
+
+    <section class="services">
+      <div class="service-card">
+        <img src="pool-cleaning.jpg" alt="Pool Cleaning" style="width:100%; border-radius:8px; height:180px; object-fit:cover;">
+        <h3>Pool Cleaning</h3>
+        <p>Keep your pool sparkling clean with weekly or one-time deep cleaning services.</p>
+      </div>
+      <div class="service-card">
+        <img src="equipment-install.jpg" alt="Equipment Installation" style="width:100%; border-radius:8px; height:180px; object-fit:cover;">
+        <h3>Equipment Installation</h3>
+        <p>From pumps to filters, we install and configure high-performance pool equipment.</p>
+      </div>
+      <div class="service-card">
+        <img src="maintenance-plan.jpg" alt="Maintenance Plans" style="width:100%; border-radius:8px; height:180px; object-fit:cover;">
+        <h3>Maintenance Plans</h3>
+        <p>Choose a custom maintenance plan that fits your needs and budget all year round.</p>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <blockquote>
+        "JTS Pool Service is the best in town! Our pool has never looked better, and their team is always professional and friendly."
+      </blockquote>
+      <cite>- A Happy Customer</cite>
+    </section>
   </main>
-  
+
   <footer>
     <p>&copy; 2025 JTS Pool Service | Follow us: 
       <a href="#" style="color:#fff;">Facebook</a> | 
       <a href="#" style="color:#fff;">Instagram</a>
     </p>
-  </footer>
-  
-    <p>&copy; 2025 JTS Pool Service. All rights reserved.</p>
   </footer>
 </body>
 </html>
